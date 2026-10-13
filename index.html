@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101820">
+  <title>Lane Racing Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="hud">
+      <div class="brand"><span class="brand-mark">L</span><span>LANE RACING GAME</span></div>
+      <div class="stats">
+        <div><span class="stat-label">SCORE</span><strong id="score">000000</strong></div>
+        <div><span class="stat-label">BEST</span><strong id="best">000000</strong></div>
+        <div class="boost-stat"><span class="stat-label">BOOST</span><div class="boost-meter"><i id="boost-meter"></i></div></div>
+      </div>
+    </header>
+
+    <section class="game-stage" aria-label="Lane Racing Game">
+      <canvas id="game" width="480" height="720"></canvas>
+      <div id="start-panel" class="overlay">
+        <p class="eyebrow">NIGHT DRIVE / 01</p>
+        <h1>Own the<br><em>roads.</em></h1>
+        <p class="intro">Thread the traffic. Chase the high score.</p>
+        <button id="start-button" class="primary-button">START RACE <span>ENTER</span></button>
+        <p class="controls-hint">Arrow keys or A / D to steer<br>Hold Space for boost</p>
+      </div>
+      <div id="game-over-panel" class="overlay hidden">
+        <p class="eyebrow">RACE OVER</p>
+        <h2>That was<br><em>close.</em></h2>
+        <p class="final-score">SCORE <strong id="final-score">000000</strong></p>
+        <button id="restart-button" class="primary-button">RACE AGAIN <span>ENTER</span></button>
+      </div>
+    </section>
+
+    <footer class="mobile-controls" aria-label="Touch controls">
+      <button data-direction="left" aria-label="Steer left">&#8592;</button>
+      <button data-boost aria-label="Hold to boost">BOOST</button>
+      <button data-direction="right" aria-label="Steer right">&#8594;</button>
+    </footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>

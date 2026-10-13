@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+:root { --ink: #101820; --paper: #f4f1ea; --acid: #d6f54a; --coral: #ff6b54; --muted: #81909a; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; display: grid; place-items: center; color: var(--paper); background: #101820; font-family: 'Space Mono', monospace; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opacity: .28; background: linear-gradient(115deg, transparent 0 46%, #263640 46% 47%, transparent 47% 100%), repeating-linear-gradient(0deg, transparent 0 5px, rgba(255,255,255,.035) 6px); }
+.game-shell { width: min(100%, 580px); min-height: 100vh; padding: 28px 24px 20px; display: flex; flex-direction: column; gap: 18px; }
+.hud { display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 10px; font: 800 19px 'Barlow Condensed', sans-serif; letter-spacing: 2px; }
+.brand-mark { display: grid; place-items: center; width: 29px; height: 29px; color: var(--ink); background: var(--acid); font: 800 19px 'Barlow Condensed', sans-serif; transform: skew(-10deg); }
+.stats { display: flex; gap: 25px; text-align: right; }
+.stats div { display: flex; flex-direction: column; gap: 4px; }
+.stat-label { color: var(--muted); font-size: 9px; letter-spacing: 1px; }
+.stats strong { color: var(--acid); font-size: 14px; letter-spacing: 1px; }
+.boost-stat { min-width: 58px; }
+.boost-meter { width: 58px; height: 5px; margin-top: 5px; overflow: hidden; background: #34454c; }
+.boost-meter i { display: block; width: 100%; height: 100%; background: var(--coral); transform-origin: left; transition: transform .1s linear; }
+.game-stage { position: relative; width: 100%; max-width: 480px; margin: 0 auto; overflow: hidden; border: 1px solid #34454c; box-shadow: 14px 14px 0 #0a1116; background: #202d32; aspect-ratio: 2 / 3; }
+canvas { display: block; width: 100%; height: 100%; }
+.overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 48px; background: linear-gradient(90deg, rgba(16,24,32,.96), rgba(16,24,32,.68) 72%, transparent); }
+.overlay.hidden { display: none; }
+.eyebrow { margin: 0 0 17px; color: var(--acid); font-size: 10px; letter-spacing: 2px; }
+h1, h2 { margin: 0; color: var(--paper); font: 800 76px/.78 'Barlow Condensed', sans-serif; letter-spacing: -1px; text-transform: uppercase; }
+h2 { font-size: 68px; }
+em { color: var(--coral); font-style: normal; }
+.intro { max-width: 190px; margin: 25px 0 31px; color: #bac4c6; font-size: 11px; line-height: 1.7; }
+.primary-button { border: 0; padding: 14px 16px; color: var(--ink); background: var(--acid); cursor: pointer; font: 700 12px 'Space Mono', monospace; transition: transform .16s, background .16s; }
+.primary-button:hover, .primary-button:focus-visible { background: #f1ff8a; transform: translate(3px, -3px); outline: none; }
+.primary-button span { margin-left: 19px; color: #697b1f; font-size: 9px; }
+.controls-hint { margin-top: 42px; color: #708089; font-size: 9px; line-height: 1.8; }
+.final-score { margin: 28px 0; color: var(--muted); font-size: 10px; letter-spacing: 1px; }
+.final-score strong { color: var(--paper); font-size: 22px; }
+.mobile-controls { display: none; justify-content: space-between; align-items: center; gap: 12px; max-width: 480px; width: 100%; margin: 0 auto; }
+.mobile-controls button { flex: 1; min-width: 0; height: 52px; border: 1px solid #526169; color: var(--acid); background: #1a272d; font: 700 13px 'Space Mono', monospace; cursor: pointer; touch-action: none; user-select: none; }
+.mobile-controls button:first-child, .mobile-controls button:last-child { font-size: 28px; }
+.mobile-controls button:active { color: var(--ink); background: var(--acid); }
+@media (max-width: 820px), (pointer: coarse) { .game-shell { padding: 18px 16px 12px; gap: 12px; } .game-stage { box-shadow: 8px 8px 0 #0a1116; } .overlay { padding: 30px; } h1 { font-size: clamp(60px, 18vw, 76px); } h2 { font-size: 58px; } .mobile-controls { display: flex; } .stats { gap: 12px; } .boost-stat { display: none !important; } }
+@media (orientation: landscape) and (max-height: 800px), (orientation: landscape) and (pointer: coarse) { .game-shell { min-height: 0; padding-top: 10px; padding-bottom: 10px; gap: 8px; } .game-stage { width: min(480px, calc((100vh - 142px) * 2 / 3)); height: calc(100vh - 142px); } .mobile-controls { display: flex; } .mobile-controls button { height: 42px; } }
+@media (max-height: 760px) and (min-width: 601px) { .game-shell { padding-top: 14px; gap: 10px; } }
